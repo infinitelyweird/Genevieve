@@ -1,4 +1,5 @@
 ﻿using Figgle;
+using System.Media;
 
 // The string we want to use to print out into the console window.
 String genevieve = "Happy Birthday Genevieve!!!!";
@@ -6,6 +7,10 @@ String genevieve = "Happy Birthday Genevieve!!!!";
 // A thread so that this code can launch without freezing up the console window.
 new Thread(new ThreadStart(() =>
 {
+
+    SoundPlayer soundPlayer = new SoundPlayer(Genevieve.Properties.Resources.bday00);
+    soundPlayer.Play();
+
     // An array of colors so we can randomly choose a color for a word or character.
     System.Drawing.Color[] colors = { System.Drawing.Color.Red, System.Drawing.Color.Green, System.Drawing.Color.Blue, System.Drawing.Color.Yellow, System.Drawing.Color.OrangeRed, System.Drawing.Color.Aqua, System.Drawing.Color.Beige };
 
@@ -13,7 +18,7 @@ new Thread(new ThreadStart(() =>
     try
     {
         // Read the Cake.txt file into a string array.
-        String[] cakeFile = File.ReadAllLines("Cake.txt", System.Text.Encoding.Unicode);
+        String[] cakeFile = Genevieve.Properties.Resources.Cake.Split("\r\n");
 
         // Iterate through the lines
         foreach (String s in cakeFile)
